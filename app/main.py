@@ -286,8 +286,9 @@ def _render_pdf(payload: Dict[str, Any]) -> bytes:
 
 # ---------- Basic routes ----------
 @app.get("/", response_class=HTMLResponse)
-def root():
-    return "<h3>ClearTariff is running. Visit <a href='/form'>/form</a> or <a href='/docs'>/docs</a>.</h3>"
+def marketing_home(request: Request):
+    # Serve marketing landing page as the homepage
+    return templates.TemplateResponse("landing.html", {"request": request})
 
 @app.get("/__health")
 def healthcheck():
@@ -628,7 +629,8 @@ async def generate_amazon(
 @app.get("/form", response_class=HTMLResponse)
 def amazon_form(request: Request):
     return templates.TemplateResponse("form.html", {"request": request})
-#--- Marketing landing page (override any legacy /marketing) ---
+
+#--- Marketing landing page (alias) ---
 @app.get("/marketing", response_class=HTMLResponse)
 def marketing(request: Request):
     return templates.TemplateResponse("landing.html", {"request": request})

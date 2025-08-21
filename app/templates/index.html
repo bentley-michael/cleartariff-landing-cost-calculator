@@ -1,83 +1,151 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>ClearTariff — Amazon Sellers Duty & Landed Cost</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ClearTariff — Landed Cost & Duty Calculator for Amazon Sellers</title>
+  <meta name="description" content="Instantly calculate landed costs, duties, and per-unit economics for Amazon sellers. Generate a clean PDF report to share with partners.">
+  <!-- Open Graph / Sharing -->
+  <meta property="og:title" content="ClearTariff — Landed Cost & Duty Calculator">
+  <meta property="og:description" content="Turn supplier quotes into a clean landed cost & duty PDF. No spreadsheets. No guesswork.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cleartariff.com">
+  <meta property="og:image" content="/preview.png">
+
   <style>
-    body { font-family: Arial, sans-serif; margin:0; }
-    header { display:flex; justify-content:space-between; align-items:center; padding:16px 24px; border-bottom:1px solid #eee; }
-    .logo { font-weight:800; letter-spacing:0.3px; }
-    nav a { margin-left:16px; text-decoration:none; color:#111827; }
-    .hero { max-width:980px; margin:48px auto; padding:0 24px; text-align:center; }
-    h1 { font-size:32px; margin-bottom:8px; }
-    p.muted { color:#555; }
-    .btns { margin-top:20px; }
-    .btn { display:inline-block; padding:12px 18px; border-radius:10px; text-decoration:none; }
-    .primary { background:#111827; color:#fff; }
-    .secondary { border:1px solid #111827; color:#111827; }
-    footer { text-align:center; padding:24px; color:#777; border-top:1px solid #eee; margin-top:60px; }
+    :root{--bg:#0b1020;--fg:#ffffff;--ink:#0b1020;--card:#ffffff;--muted:#6b7280;--line:#eceff4;--brand:#1e66ff;}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 Inter,system-ui,Segoe UI,Roboto,Arial}
+    a{text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px 18px}
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+    .logo{font-weight:900;letter-spacing:.3px;color:#fff}
+    .logo b{color:var(--brand)}
+    nav a{color:#cbd5e1;margin-left:16px}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;margin-top:14px}
+    h1{font-size:36px;line-height:1.15;margin:0 0 12px}
+    p.lead{font-size:18px;opacity:.9;margin:0 0 18px}
+    .cta{display:flex;gap:12px;margin-top:14px}
+    .btn{background:var(--brand);color:#fff;padding:12px 16px;border-radius:12px;font-weight:700;display:inline-block}
+    .btn.alt{background:transparent;border:1px solid #3b82f6}
+    .card{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:18px}
+    .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:28px}
+    .k{font-weight:700}
+    .muted{color:var(--muted)}
+    .footer{margin:40px 0 10px;opacity:.75;font-size:13px;text-align:center}
+    .trust{margin:14px 0 0;border:1px solid #1f2937;border-radius:12px;padding:12px 14px;background:rgba(255,255,255,.04);color:#cbd5e1}
+    .preset{margin-top:10px}
+    .preset label{display:block;margin:0 0 6px;font-weight:700;color:#cbd5e1}
+    .preset select{width:100%;padding:10px 12px;border-radius:10px;border:1px solid #334155;background:#111827;color:#e5e7eb}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-<!-- Trust & headline block (injected 2025-08-20T19:29:07.613907Z) -->
-<section class="trust-block" style="max-width: 980px; margin: 12px auto 20px; padding: 16px 18px; border:1px solid #eee; border-radius: 14px; background:#fafafa;">
-  <h1 style="margin:0 0 6px; font-size: 26px;">Amazon Sellers: Instantly Calculate Your True Landed Cost & Duties</h1>
-  <p style="margin: 0; color:#444;">Save hours of guesswork and avoid costly surprises — get a professional cost breakdown in seconds. Download a branded PDF report for your records.</p>
-</section>
+  <div class="wrap">
+    <header>
+      <div class="logo"><b>Clear</b>Tariff</div>
+      <nav>
+        <a href="/form">Calculate</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </header>
 
-  <header>
-    <div class="logo">ClearTariff</div>
-    <nav>
-      <a href="/form">Calculate</a>
-      <a href="/pricing">Pricing</a>
-    </nav>
-  </header>
+    <section class="hero">
+      <div>
+        <h1>Know your true landed cost—before you ship.</h1>
+        <p class="lead">ClearTariff turns supplier quotes into a clean landed cost & duty PDF for Amazon Sellers. No spreadsheets. No guesswork.</p>
+        <div class="cta">
+          <a href="/form" class="btn">Try the Calculator Free</a>
+          <a href="#pricing" class="btn alt">See Pricing</a>
+        </div>
+        <div class="trust">
+          <b>What you get:</b> professional PDF with duty, totals, and per-unit landed cost • US/UK/EU/CA (Phase 1 focus: US) • Optional email delivery
+        </div>
 
-  <section class="hero">
-    <h1>Know Your <em>Landed Cost Per Unit</em> in Minutes</h1>
-    <p class="muted">Amazon sellers use ClearTariff to estimate duties and true landed cost before sending inventory to FBA. Avoid surprises. Price with confidence.</p>
-    <div class="btns">
-      <a class="btn primary" href="/form">Calculate Now</a>
-      <a class="btn secondary" href="/pricing">View Pricing</a>
-    </div>
-  </section>
+        <!-- Category preset that passes suggested HS/duty to /form via querystring -->
+        <div class="preset">
+          <label for="amazon_category">Quick start (optional): choose a category</label>
+          <select id="amazon_category" onchange="applyPreset(this)">
+            <option value="">— Select a common Amazon category —</option>
+            <option>Electronics & Accessories</option>
+            <option>Home & Kitchen</option>
+            <option>Health & Beauty</option>
+            <option>Clothing & Apparel</option>
+            <option>Toys & Games</option>
+            <option>Sports & Outdoors</option>
+          </select>
+          <p class="muted" style="margin:6px 0 0">We’ll open the calculator with a starting HS code and duty %. You can edit anything on the form.</p>
+        </div>
+      </div>
 
-  <footer>© 2025 ClearTariff — Estimation tool only. Verify HS codes and rates with your broker.</footer>
+      <div class="card">
+        <h3 style="margin:0 0 10px">Fast results, fewer surprises</h3>
+        <ul style="margin:0 0 6px 18px">
+          <li>Accurate landed cost structure (declared, duty, freight, insurance, extras)</li>
+          <li>Per-unit economics to price with confidence</li>
+          <li>Downloadable PDF for partners and record-keeping</li>
+        </ul>
+        <p class="muted" style="margin-top:10px">“This would have saved me two bad orders last year.” — FBA seller</p>
+      </div>
+    </section>
 
-<script>
-// Amazon seller presets -> HS code + indicative duty %
-// NOTE: Users can override these; values are illustrative and must be confirmed.
-const AMAZON_PRESETS = {
-  "": {"hs":"", "duty": ""},
-  "Electronics & Accessories": {"hs":"8517.62.0090", "duty":"0"},          // many phone accessories ~0%
-  "Home & Kitchen": {"hs":"7323.93.0080", "duty":"2.9"},                    // kitchenware (example)
-  "Health & Beauty": {"hs":"3304.99.5000", "duty":"0"},                     // cosmetics/examples vary
-  "Clothing & Apparel": {"hs":"6109.10.0004", "duty":"16.5"},               // knit cotton t-shirts
-  "Toys & Games": {"hs":"9503.00.0073", "duty":"0"},                        // many toys are 0%
-  "Sports & Outdoors": {"hs":"9506.99.6080", "duty":"2.4"}                  // sporting goods (example)
-};
+    <section class="grid-3">
+      <div class="card">
+        <div class="k">Why sellers use it</div>
+        <p class="muted">Margins vanish when you forget freight, insurance, and duty. ClearTariff shows the real number—fast.</p>
+      </div>
+      <div class="card">
+        <div class="k">How it works</div>
+        <p class="muted">Enter units, unit value, HS code, origin, freight & extras → get a clean PDF to share with partners or keep on file.</p>
+      </div>
+      <div class="card">
+        <div class="k">Phase 2 roadmap</div>
+        <p class="muted">API & CSV bulk runs • Saved presets • Deeper duty lookups for UK/EU/CA.</p>
+      </div>
+    </section>
 
-function applyPreset(sel){
-  const val = sel.value;
-  const p = AMAZON_PRESETS[val] || {hs:"", duty:""};
-  const hs = document.querySelector('#hs_code, [name="hs_code"], input[data-role="hs_code"]');
-  const duty = document.querySelector('#duty_rate, [name="duty_rate"], input[data-role="duty_rate"]');
-  if(hs){ hs.value = p.hs || hs.value; }
-  if(duty){ duty.value = p.duty || duty.value; }
-}
-</script>
+    <section id="pricing" class="card" style="margin-top:28px">
+      <h3 style="margin:0 0 8px">Pricing</h3>
+      <ul style="margin:0 0 0 18px">
+        <li><b>Free:</b> 3 reports/month</li>
+        <li><b>Pro $19/mo:</b> unlimited reports, email delivery, saved presets</li>
+        <li><b>Team $49/mo:</b> shared presets, basic branding, export history</li>
+      </ul>
+      <p class="muted" style="margin-top:6px">Enterprise & API pricing on request.</p>
+    </section>
 
+    <section id="faq" class="card" style="margin-top:18px">
+      <h3 style="margin:0 0 8px">FAQ</h3>
+      <p><b>Will this replace my broker?</b><br><span class="muted">No—this is a planning tool. Use it to validate product economics; your broker files the entry.</span></p>
+      <p><b>Where do rates come from?</b><br><span class="muted">Phase 1 uses seller-provided HS codes & rates; automatic lookups are coming.</span></p>
+      <p><b>What about EU/UK?</b><br><span class="muted">Supported in the UI; deeper integrations roll out next.</span></p>
+    </section>
+
+    <p class="footer">© 2025 ClearTariff • Estimation tool only • Verify HS codes and rates with your broker.</p>
+  </div>
+
+  <script>
+    // Same presets you already had; now we pass them to /form via querystring.
+    const AMAZON_PRESETS = {
+      "": {"hs":"", "duty": ""},
+      "Electronics & Accessories": {"hs":"8517.62.0090", "duty":"0"},
+      "Home & Kitchen": {"hs":"7323.93.0080", "duty":"2.9"},
+      "Health & Beauty": {"hs":"3304.99.5000", "duty":"0"},
+      "Clothing & Apparel": {"hs":"6109.10.0004", "duty":"16.5"},
+      "Toys & Games": {"hs":"9503.00.0073", "duty":"0"},
+      "Sports & Outdoors": {"hs":"9506.99.6080", "duty":"2.4"}
+    };
+    function applyPreset(sel){
+      const val = sel.value;
+      const p = AMAZON_PRESETS[val] || {hs:"", duty:""};
+      const params = new URLSearchParams();
+      if(p.hs) params.set("hs_code", p.hs);
+      if(p.duty) params.set("duty_rate_pct", p.duty);
+      // You can read these in /form via request.query_params and prefill inputs.
+      const url = "/form" + (params.toString() ? ("?"+params.toString()) : "");
+      window.location.href = url;
+    }
+  </script>
 </body>
 </html>
-<!-- Amazon-seller category presets -->
-<label for="amazon_category" style="font-weight:600; margin-top:12px; display:block;">Choose a product category (optional)</label>
-<select id="amazon_category" name="amazon_category" onchange="applyPreset(this)" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:8px;">
-  <option value="">— Select a common Amazon category —</option>
-  <option>Electronics & Accessories</option>
-  <option>Home & Kitchen</option>
-  <option>Health & Beauty</option>
-  <option>Clothing & Apparel</option>
-  <option>Toys & Games</option>
-  <option>Sports & Outdoors</option>
-</select>
-<p class="help" style="font-size:12px; color:#666; margin-top:6px;">Tip: Pick a category to auto-fill a starting HS code and duty %. You can always adjust these.</p>
