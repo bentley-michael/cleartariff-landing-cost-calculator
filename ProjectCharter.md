@@ -18,7 +18,7 @@ The fastest way for Amazon sellers to calculate duties & tariffs before shipping
 - Form at `/form` with HS code, countries, value, costs
 - Generate PDF via `/generate` (Weasy/ReportLab fallback)
 - Paywall via Stripe Checkout, success/cancel routes
-- Email delivery optional via SendGrid
+- Email delivery optional via Resend
 
 ## Risks & Mitigations
 - Data freshness → show disclaimer; add live sources in v2

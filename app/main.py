@@ -324,7 +324,7 @@ def _render_pdf(payload: Dict[str, Any]) -> bytes:
 @app.get("/", response_class=HTMLResponse)
 def marketing_home(request: Request):
     # Serve marketing landing page as the homepage
-    return templates.TemplateResponse("landing.html", {"request": request})
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
 @app.get("/__health")
@@ -728,4 +728,4 @@ def amazon_form(request: Request):
 #--- Marketing landing page (alias) ---
 @app.get("/marketing", response_class=HTMLResponse)
 def marketing(request: Request):
-    return templates.TemplateResponse("landing.html", {"request": request})
+    return templates.TemplateResponse("index.html", {"request": request})

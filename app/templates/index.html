@@ -30,6 +30,10 @@
     .btn.alt{background:transparent;border:1px solid #3b82f6}
     .card{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:18px}
     .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:28px}
+    .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .price{font-size:28px;font-weight:800;margin:10px 0}
+    button.btn{border:none;cursor:pointer}
+    button.btn[disabled]{opacity:.55;cursor:not-allowed}
     .k{font-weight:700}
     .muted{color:var(--muted)}
     .footer{margin:40px 0 10px;opacity:.75;font-size:13px;text-align:center}
@@ -105,14 +109,22 @@
       </div>
     </section>
 
-    <section id="pricing" class="card" style="margin-top:28px">
-      <h3 style="margin:0 0 8px">Pricing</h3>
-      <ul style="margin:0 0 0 18px">
-        <li><b>Free:</b> 3 reports/month</li>
-        <li><b>Pro $19/mo:</b> unlimited reports, email delivery, saved presets</li>
-        <li><b>Team $49/mo:</b> shared presets, basic branding, export history</li>
-      </ul>
-      <p class="muted" style="margin-top:6px">Enterprise & API pricing on request.</p>
+    <section id="pricing" style="margin-top:28px">
+      <h3 style="margin:0 0 12px">Pricing</h3>
+      <div class="pricing-grid">
+        <div class="card">
+          <div class="k">One Report</div>
+          <div class="price">$9</div>
+          <p class="muted" style="margin:0 0 16px">Pay per duty & landed cost PDF</p>
+          <button type="button" class="btn" onclick="buyReport()">Buy Now</button>
+        </div>
+        <div class="card">
+          <div class="k">Unlimited</div>
+          <div class="price">$29/mo</div>
+          <p class="muted" style="margin:0 0 16px">For power sellers and frequent importers</p>
+          <button type="button" class="btn" disabled>Coming Soon</button>
+        </div>
+      </div>
     </section>
 
     <section id="faq" class="card" style="margin-top:18px">
@@ -145,6 +157,16 @@
       // You can read these in /form via request.query_params and prefill inputs.
       const url = "/form" + (params.toString() ? ("?"+params.toString()) : "");
       window.location.href = url;
+    }
+
+    async function buyReport(){
+      const res = await fetch('/api/checkout/create-session', {method:'POST'});
+      const data = await res.json();
+      if(res.ok && data.checkout_url){
+        window.location.href = data.checkout_url;
+        return;
+      }
+      alert(data.detail || 'Payment setup error');
     }
   </script>
 </body>

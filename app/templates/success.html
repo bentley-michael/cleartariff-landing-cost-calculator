@@ -15,10 +15,17 @@
 <body>
   <div class="card">
     <h1>All set — your ClearTariff report should be downloading</h1>
-    <p class="muted">This receipt confirms your Amazon FBA duty report purchase.</p>
-    <p class="muted">If the download didn’t start, you can re-generate it below.</p>
+    <p class="muted">This page confirms the checkout handoff for your Amazon FBA duty report.</p>
+    {% if demo %}
+      <p class="muted">Demo mode is active, so no live Stripe charge was required for this redirect.</p>
+    {% else %}
+      <p class="muted">Stripe returned successfully and the app accepted the payment callback.</p>
+    {% endif %}
     {% if email %}
       <p>We also emailed a copy to <b>{{ email }}</b>.</p>
+    {% endif %}
+    {% if session_id %}
+      <p class="muted">Stripe session: <code>{{ session_id }}</code></p>
     {% endif %}
     <p><a class="button" href="/form?paid=1">Generate another report</a></p>
   </div>
