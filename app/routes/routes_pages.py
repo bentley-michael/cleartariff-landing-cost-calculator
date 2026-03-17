@@ -4,9 +4,19 @@ from fastapi.responses import HTMLResponse
 
 router = APIRouter(tags=["pages"])
 
-@router.get("/cancel")
+@router.get("/cancel", response_class=HTMLResponse)
 async def cancel():
-    return HTMLResponse("<h2>ClearTariff — Checkout canceled</h2><p>No charge was made. You can try again any time.</p>")
+    return HTMLResponse(
+        """
+        <html>
+            <head><title>ClearTariff - Checkout canceled</title></head>
+            <body>
+                <h2>ClearTariff - Checkout canceled</h2>
+                <p>No charge was made. You can try again any time.</p>
+            </body>
+        </html>
+        """
+    )
 
 
 @router.get("/pricing")
@@ -18,14 +28,19 @@ async def pricing():
     return HTMLResponse(html)
 
 
-@router.get("/")
+@router.get("/", response_class=HTMLResponse)
 async def home():
-    from fastapi.responses import HTMLResponse
-    try:
-        html = (open("app/templates/index.html", "r", encoding="utf-8").read())
-    except Exception as e:
-        html = f"<h2>ClearTariff</h2><p>Home error</p><pre>{e}</pre>"
-    return HTMLResponse(html)
+    return HTMLResponse(
+        """
+        <html>
+            <head><title>ClearTariff</title></head>
+            <body>
+                <h1>ClearTariff</h1>
+                <p>Service is up.</p>
+            </body>
+        </html>
+        """
+    )
 
 
 @router.get("/form")

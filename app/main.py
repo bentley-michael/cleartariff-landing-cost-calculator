@@ -321,13 +321,6 @@ def _render_pdf(payload: Dict[str, Any]) -> bytes:
         return _minimal_pdf_fallback("All generators failed — minimal fallback", {"error": str(e)})
 
 
-# ---------- Basic routes ----------
-@app.get("/", response_class=HTMLResponse)
-def marketing_home(request: Request):
-    # Serve marketing landing page as the homepage
-    return templates.TemplateResponse("index.html", {"request": request})
-
-
 @app.get("/__health")
 def healthcheck():
     return {"ok": True, "status": "healthy"}
@@ -575,49 +568,6 @@ try:
     app.include_router(webhook_router)
 except Exception as e:
     logging.warning("Webhook router not loaded: %s", e)
-
-
-def _route_exists(path: str, methods: Optional[set[str]] = None) -> bool:
-    for route in app.routes:
-        if getattr(route, "path", None) != path:
-            continue
-        route_methods = set(getattr(route, "methods", set()) or set())
-        if methods is None or methods.issubset(route_methods):
-            return True
-    return False
-
-
-if not _route_exists("/success", {"GET"}):
-    @app.get("/success", response_class=HTMLResponse)
-    async def success_fallback():
-        return HTMLResponse(
-            """
-            <html>
-                <head><title>Checkout Complete</title></head>
-                <body>
-                    <h1>Checkout complete</h1>
-                    <p>Your checkout has been completed successfully.</p>
-                </body>
-            </html>
-            """
-        )
-
-
-if not _route_exists("/cancel", {"GET"}):
-    @app.get("/cancel", response_class=HTMLResponse)
-    async def cancel_fallback():
-        return HTMLResponse(
-            """
-            <html>
-                <head><title>Checkout Canceled</title></head>
-                <body>
-                    <h1>Checkout canceled</h1>
-                    <p>Your checkout was canceled and no charge was made.</p>
-                </body>
-            </html>
-            """
-        )
-
 
 # ---------- Self-test (tells you which engine ran) ----------
 @app.get("/_pdf_selftest")
