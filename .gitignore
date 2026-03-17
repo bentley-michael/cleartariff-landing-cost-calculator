@@ -1,5 +1,3 @@
-@"
-# Python / FastAPI
 __pycache__/
 *.py[cod]
 *.pyo
@@ -19,7 +17,11 @@ dist/
 build/
 .pytest_cache/
 
-# Generated PDFs
+# Generated PDFs and test artifacts
+/*.pdf
+/tests/artifacts/
 TariffTest*.pdf
 TariffOrder*.pdf
-"@ | Out-File -Encoding utf8 .gitignore
+
+# Local email/debug output
+/outbox/
