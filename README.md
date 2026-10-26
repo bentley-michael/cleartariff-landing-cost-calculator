@@ -1,5 +1,7 @@
 # ClearTariff Landed Cost Calculator
 
+![CI](https://github.com/bentley-michael/cleartariff-landing-cost-calculator/actions/workflows/ci.yml/badge.svg)
+
 ClearTariff is a FastAPI demonstration project for estimating landed cost, generating a PDF report, and routing a user through a checkout-ready workflow. It is structured as a compact portfolio-grade service that shows how a lightweight Python web application can combine form handling, calculation logic, document generation, payment integration, and operational health monitoring.
 
 ## Features
@@ -40,7 +42,7 @@ ClearTariff is a FastAPI demonstration project for estimating landed cost, gener
 
 ```text
 ┌────────────────────┐
-│ Browser / Recruiter│
+│ Browser / Client   │
 └─────────┬──────────┘
                     │ HTTP
                     v
@@ -199,7 +201,7 @@ The browser submits `POST /generate` as form data. The logical request values lo
 
 ## Demonstration Architecture Notes
 
-This repository is intentionally compact, but it demonstrates a complete engineering story that is useful in a recruiter or portfolio review:
+This repository is intentionally compact. It covers these points:
 
 - A user-facing web workflow backed by a typed Python service
 - Modular route organization instead of a single-file demo app
